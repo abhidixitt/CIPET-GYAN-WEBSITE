@@ -13,7 +13,7 @@ const StudyMaterials = () => (
         <div className="resource-card-top"><span className="resource-icon"><Icon size={21} aria-hidden="true" /></span><span>{label}</span></div>
         <h3>{title}</h3>
         <p>{text}</p>
-        <a href="#how-it-works">How to use this resource <ArrowUpRight size={16} aria-hidden="true" /></a>
+        <a className="resource-link" href="#app">View in app <ArrowUpRight size={16} aria-hidden="true" /></a>
       </article>
     ))}
   </div>

@@ -1,6 +1,8 @@
-import { ArrowRight, BookOpen, FileText, GraduationCap, Layers3 } from "lucide-react";
+import { ArrowRight, BookOpen, Download, FileText, GraduationCap, Layers3 } from "lucide-react";
 import { motion } from "framer-motion";
 import heroAsset from "../assets/hero.png";
+
+const APP_DOWNLOAD_URL = "/app-download.apk";
 
 const reveal = {
   hidden: { opacity: 0, y: 22 },
@@ -22,6 +24,7 @@ const Hero = () => {
           <motion.div className="hero-actions" variants={reveal} initial="hidden" animate="visible" transition={{ delay: 0.3 }}>
             <a className="hero-button" href="#resources">Explore resources <ArrowRight size={17} aria-hidden="true" /></a>
             <a className="hero-button secondary" href="#about">Why CIPET GYAN</a>
+            <a className="hero-button download-button" href={APP_DOWNLOAD_URL}><Download size={17} aria-hidden="true" /> Download app</a>
           </motion.div>
         </div>
 
