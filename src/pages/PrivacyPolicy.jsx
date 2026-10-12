@@ -21,6 +21,7 @@ const PrivacyPolicy = () => {
         <h2>Information we handle</h2>
         <p>When you create and use an account, we handle information such as your name, email address, account details, and information needed to provide the services you request.</p>
         <p>When you use learning and purchase features, we handle mock-test answers and results, purchased-content access, and purchase or order details such as the content purchased, amount, and payment transaction identifiers. If you contact support, we also handle the information you include in your message.</p>
+        <p>For purchases in India, if you choose Razorpay through Google Play's billing-choice flow, we also send Google Play the transaction token, product and transaction details, tax amount, transaction time, and the billing state you provide so we can report the authorized transaction as required by the program.</p>
         <p>Payment providers process payment credentials. CIPET GYAN does not intentionally store complete card, UPI, or bank credentials on its own servers.</p>
       </section>
 
@@ -37,7 +38,7 @@ const PrivacyPolicy = () => {
 
       <section className="privacy-policy-section">
         <h2>Service providers and sharing</h2>
-        <p>We use service providers to operate CIPET GYAN, including Firebase services for account authentication and app data, our hosting and backend providers, and Razorpay for payment processing. These providers process information needed for their services under their own terms and privacy policies.</p>
+        <p>We use service providers to operate CIPET GYAN, including Firebase services for account authentication and app data, our hosting and backend providers, Razorpay for payment processing, and Google Play for Play Billing and the required billing-choice transaction reports. These providers process information needed for their services under their own terms and privacy policies.</p>
         <p>We do not sell or rent personal information. We may disclose information when needed to protect users or the service, respond to valid legal requests, or comply with applicable law.</p>
       </section>
 
