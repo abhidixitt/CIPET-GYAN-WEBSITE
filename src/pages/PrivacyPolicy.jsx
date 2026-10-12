@@ -14,56 +14,38 @@ const PrivacyPolicy = () => {
         <span className="eyebrow">CIPET GYAN</span>
         <h1>Privacy Policy</h1>
         <p className="privacy-policy-updated">Last updated: 12 October 2026</p>
-        <p>This policy explains how CIPET GYAN handles information when you use our learning app and website.</p>
+        <p>CIPET GYAN is an independent learning app. It is not an official CIPET app and is not endorsed by or affiliated with CIPET.</p>
       </header>
-
       <section className="privacy-policy-section">
-        <h2>Information we handle</h2>
-        <p>When you create and use an account, we handle information such as your name, email address, account details, and information needed to provide the services you request.</p>
-        <p>When you use learning and purchase features, we handle mock-test answers and results, purchased-content access, and purchase or order details such as the content purchased, amount, and payment transaction identifiers. If you contact support, we also handle the information you include in your message.</p>
-        <p>For purchases in India, if you choose Razorpay through Google Play's billing-choice flow, we also send Google Play the transaction token, product and transaction details, tax amount, transaction time, and the billing state you provide so we can report the authorized transaction as required by the program.</p>
-        <p>Payment providers process payment credentials. CIPET GYAN does not intentionally store complete card, UPI, or bank credentials on its own servers.</p>
+        <h2>Information we collect</h2>
+        <p>When you register, we collect your name, email address, Firebase account identifier and account details. When you use learning features, we process course access and purchase records, mock-test question selections, correctness and answer times, and support information you send us.</p>
+        <p>If you use the profile-switch feature, the app can save the account email and password you provide in your device's secure storage so it can switch profiles. Use that feature only on a device you control.</p>
       </section>
-
       <section className="privacy-policy-section">
         <h2>How we use information</h2>
-        <ul>
-          <li>Create and manage student accounts.</li>
-          <li>Provide learning materials, mock tests, and purchased-content access.</li>
-          <li>Process and verify purchases and protect against fraud.</li>
-          <li>Maintain service security, respond to support requests, and improve the service.</li>
-          <li>Meet legal obligations and resolve disputes.</li>
-        </ul>
+        <ul><li>Create and secure accounts.</li><li>Provide learning materials and purchased-content access.</li><li>Operate mock tests and show whether answers were correct.</li><li>Process and verify payments, handle support and prevent misuse.</li><li>Meet legal and platform requirements.</li></ul>
       </section>
-
+      <section className="privacy-policy-section">
+        <h2>Payments</h2>
+        <p>Payments may use Google Play Billing or, when offered and selected in India, Razorpay through the app's billing-choice flow. Payment providers handle payment credentials; CIPET GYAN does not intentionally store complete card, UPI PIN, or bank-login credentials. We receive and store limited transaction and purchase references to verify payment and provide access. For an India alternative-billing transaction, we report required transaction, product, amount, tax, time and state information to Google Play. Google Play and Razorpay process information under their own policies.</p>
+      </section>
       <section className="privacy-policy-section">
         <h2>Service providers and sharing</h2>
-        <p>We use service providers to operate CIPET GYAN, including Firebase services for account authentication and app data, our hosting and backend providers, Razorpay for payment processing, and Google Play for Play Billing and the required billing-choice transaction reports. These providers process information needed for their services under their own terms and privacy policies.</p>
-        <p>We do not sell or rent personal information. We may disclose information when needed to protect users or the service, respond to valid legal requests, or comply with applicable law.</p>
+        <p>We use Firebase for authentication and app data, Render to host our backend, Cloudflare R2 to store and deliver files, Google Play or Razorpay to process payments, and YouTube/Google when you play embedded YouTube videos. Those providers receive information needed for their services and handle it under their own privacy terms.</p>
+        <p>We do not sell personal information. We may disclose information where necessary to protect users or the service, respond to valid legal requests, or comply with law.</p>
       </section>
-
       <section className="privacy-policy-section">
-        <h2>Storage, security, and retention</h2>
-        <p>Account information and associated learning or purchase records are stored with our service providers while needed to operate your account and provide the service. We use reasonable safeguards, but no internet service can guarantee absolute security.</p>
-        <p>If you delete your account, we delete the account and associated data held by CIPET GYAN, including profile, purchase, and mock-test records. Payment providers may retain transaction records under their own policies or legal obligations. See our <Link to="/delete-account">account deletion page</Link> for instructions.</p>
+        <h2>Retention and deletion</h2>
+        <p>Use <strong>My Profile &gt; Delete Account</strong> to delete your account in the app. On successful deletion, we delete the account and associated profile, purchase-access records and individual mock answers from our active account systems. Some transaction reports and records required for accounting, legal, security or fraud-prevention purposes, and non-identifying aggregate test statistics, may be retained for as long as needed for those purposes. Payment providers may retain their own records under their policies and legal duties. See our <Link to="/delete-account">account deletion page</Link> for deletion without the app.</p>
       </section>
-
       <section className="privacy-policy-section">
-        <h2>Your choices</h2>
-        <p>You can request deletion from <strong>My Profile &gt; Delete Account</strong> in the app. If you cannot access the app, use the request method on our <Link to="/delete-account">account deletion page</Link>. For questions or requests about your information, contact us at <a href="mailto:abhishekdixit9719@gmail.com">abhishekdixit9719@gmail.com</a>.</p>
+        <h2>Age and security</h2>
+        <p>CIPET GYAN is intended for people aged 13 or older and is not designed for children under 13. We take reasonable steps to protect information, but no online service can guarantee complete security. Keep your password private and use profile switching only on a trusted device.</p>
       </section>
-
-      <section className="privacy-policy-section">
-        <h2>Children and minors</h2>
-        <p>CIPET GYAN is an educational service for students. Where a user is a minor, use of the service should follow applicable age requirements and any required parent or guardian supervision.</p>
-      </section>
-
       <section className="privacy-policy-section">
         <h2>Changes and contact</h2>
-        <p>We may update this policy when our services or legal obligations change. The updated policy will be posted on this page with a revised date.</p>
-        <p>For privacy questions, contact CIPET GYAN at <a href="mailto:abhishekdixit9719@gmail.com">abhishekdixit9719@gmail.com</a>.</p>
+        <p>We may update this policy and will show the revised date when we do. For privacy questions or deletion help, contact <a href="mailto:abhishekdixit9719@gmail.com">abhishekdixit9719@gmail.com</a>.</p>
       </section>
-
       <p className="privacy-policy-home"><Link to="/">Return to CIPET GYAN</Link></p>
     </main>
   );

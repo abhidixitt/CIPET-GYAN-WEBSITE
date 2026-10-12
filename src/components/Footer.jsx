@@ -13,6 +13,7 @@ const Footer = () => (
         <a href="#contact">Contact details <ArrowUpRight size={13} aria-hidden="true" /></a>
         <a href="/privacy-policy">Privacy Policy <ArrowUpRight size={13} aria-hidden="true" /></a>
         <a href="/terms-and-conditions">Terms and Conditions <ArrowUpRight size={13} aria-hidden="true" /></a>
+        <a href="/refund-policy">Refund Policy <ArrowUpRight size={13} aria-hidden="true" /></a>
         <a className="footer-whatsapp" href="https://whatsapp.com/channel/0029Vamhez14inotQigdgn2C" target="_blank" rel="noreferrer"><MessageCircle size={14} aria-hidden="true" /> Follow CIPET Job Updates</a>
         <a className="footer-youtube" href="https://youtube.com/@cipetgyan" target="_blank" rel="noreferrer"><PlayCircle size={14} aria-hidden="true" /> CIPET GYAN on YouTube</a>
         <a className="footer-telegram" href="https://t.me/cipetgyan" target="_blank" rel="noreferrer"><Send size={14} aria-hidden="true" /> Join CIPET GYAN on Telegram</a>

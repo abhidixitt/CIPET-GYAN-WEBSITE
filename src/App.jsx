@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import AccountDeletion from "./pages/AccountDeletion";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import RefundPolicy from "./pages/RefundPolicy";
 import "./App.css";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/delete-account" element={<AccountDeletion />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/refund-policy" element={<RefundPolicy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 

@@ -248,3 +248,6 @@ h1, h2, h3, h4 { font-family: 'Sora', 'DM Sans', sans-serif; color: var(--color-
 .privacy-policy-section a, .privacy-policy-home a { color: var(--color-primary); font-weight: 700; }
 .privacy-policy-home { margin-top: 28px; }
 @media (max-width: 600px) { .privacy-policy { padding-top: 112px; } .privacy-policy-section { padding: 22px 20px; } }
+
+.refund-policy { min-height: 70vh; max-width: 820px; padding-top: 135px; padding-bottom: 80px; }
+@media (max-width: 600px) { .refund-policy { padding-top: 112px; } }
