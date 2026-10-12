@@ -4,6 +4,7 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import TermsAndConditions from "./pages/TermsAndConditions";
+import AccountDeletion from "./pages/AccountDeletion";
 import "./App.css";
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/delete-account" element={<AccountDeletion />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 
