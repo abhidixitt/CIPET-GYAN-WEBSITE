@@ -16,8 +16,7 @@ const AccountDeletion = () => {
         <p>Students can permanently delete their CIPET GYAN account and associated data from the app, or request deletion by email if they no longer have access to the app.</p>
       </header>
 
-      <section className="account-deletion-section" aria-labelledby="in-app-deletion">
-        <h2 id="in-app-deletion" className="sr-only">In-app deletion steps</h2>
+      <section className="account-deletion-section" aria-label="In-app deletion steps">
         <h2>Delete your account in the app</h2>
         <ol>
           <li>Sign in to your student account in the CIPET GYAN app.</li>
