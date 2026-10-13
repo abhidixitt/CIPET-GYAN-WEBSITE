@@ -13,7 +13,7 @@
 - Notes, syllabus, and previous-year papers
 - Video learning section
 - Promo video section
-- Mobile app showcase carousel
+- Mobile app showcase
 - Mock test information
 - Student reviews
 - Masked WhatsApp student review screenshots
@@ -28,34 +28,12 @@
 - HTML
 - CSS
 
-## Run Locally
+## About CIPET GYAN
 
-Install the dependencies:
+CIPET GYAN is designed to make educational resources easier to access for CIPET students through a simple and student-focused platform.
 
-```bash
-npm install
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-The local development URL and port will be displayed in the terminal by Vite.
-
-## Build
-
-Create a production build using:
-
-```bash
-npm run build
-```
-
-The production files will be generated inside the `dist` directory.
+The website also showcases the CIPET GYAN mobile application and the learning resources available through the platform.
 
 ## Website
 
-**Production:** [https://cipetgyan.me](https://cipetgyan.me/)
-
-CIPET GYAN is designed to provide students with easy access to educational resources and information related to their learning journey.
+**Official Website:** [https://cipetgyan.me](https://cipetgyan.me/)
