@@ -432,6 +432,7 @@ html { scroll-padding-top: 92px; }
 .consent-field { display: flex; align-items: flex-start; gap: 9px; color: #526a7a; font-size: .82rem; line-height: 1.55; }
 .consent-field input { margin-top: 2px; accent-color: #168b91; }
 .file-field small { color: var(--color-muted); font-weight: 400; }
+.resume-upload-notice { margin: 0; padding: 12px 14px; color: #6a3d00; border-left: 3px solid #e39a22; background: #fff7e8; font-size: .84rem; line-height: 1.55; }
 .file-picker { display: flex; align-items: center; gap: 9px; padding: 10px; color: #557083; border: 1px dashed #bfced7; font-weight: 400; }
 .file-picker svg { flex: 0 0 auto; color: #168c93; }
 .file-picker input { min-height: 0; padding: 0; border: 0; font-size: .75rem; }

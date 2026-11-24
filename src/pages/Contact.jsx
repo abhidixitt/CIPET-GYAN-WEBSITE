@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 
 const email = "abhishekdixit9719@gmail.com";
 const netlifyFormsEnabled = import.meta.env.VITE_NETLIFY_FORMS_ENABLED === "true";
+const resumeUploadsEnabled = import.meta.env.VITE_NETLIFY_RESUME_UPLOADS_ENABLED === "true";
 const formNames = { general: "general-enquiry", employer: "employer-recruitment", candidate: "candidate-profile" };
 const emailSubjects = { general: "CIPET GYAN | General Enquiry (%{submissionId})", employer: "CIPET GYAN | Employer Recruitment Request (%{submissionId})", candidate: "CIPET GYAN | Candidate Profile (%{submissionId})" };
 const paths = [
@@ -21,7 +22,7 @@ const PreviewForm = ({ type, title, intro, children }) => {
       setStatus({ kind: "info", message: "Preview only. This form is not sending or storing submissions yet." });
       return;
     }
-    const resume = form.elements.namedItem("resume")?.files?.[0];
+    const resume = resumeUploadsEnabled ? form.elements.namedItem("resume")?.files?.[0] : null;
     if (resume && resume.size > 8 * 1024 * 1024) {
       setStatus({ kind: "error", message: "Please choose a PDF smaller than 8 MB." });
       return;
@@ -85,18 +86,18 @@ const Contact = () => {
           <div className="form-row"><Field label="Required qualification" name="qualification" /><Field label="Required experience" name="experience" /></div>
           <Field label="Job location" name="jobLocation" /><Field label="Job description and key requirements" name="jobDescription" type="textarea" required />
         </PreviewForm>}
-        {selectedPath === "candidate" && <PreviewForm type="candidate" title="Candidate profile submission" intro="For a student, fresher or experienced professional seeking job or career support. Add a PDF resume up to 8 MB.">
+        {selectedPath === "candidate" && <PreviewForm type="candidate" title="Candidate profile submission" intro={resumeUploadsEnabled ? "For a student, fresher or experienced professional seeking job or career support. Add a PDF resume up to 8 MB." : "For a student, fresher or experienced professional seeking job or career support. Resume uploads are temporarily disabled while secure file protection is set up."}>
           <div className="form-row"><Field label="Full name" name="candidateName" required /><Field label="Email address" name="email" type="email" required /></div>
           <div className="form-row"><Field label="Phone number" name="candidatePhone" type="tel" required /><Field label="Qualification" name="candidateQualification" required /></div>
           <div className="form-row"><Field label="Specialisation" name="specialisation" /><Field label="Experience" name="candidateExperience" /></div>
           <Field label="Preferred job location" name="preferredLocation" />
-          <label className="form-field file-field"><span>Resume file{netlifyFormsEnabled && <span className="required-mark" aria-hidden="true"> *</span>} <small>(PDF, max 8 MB)</small></span><span className="file-picker"><FileUp size={18} /><input type="file" name="resume" accept="application/pdf,.pdf" required={netlifyFormsEnabled} />Choose a PDF file</span></label>
+          {resumeUploadsEnabled ? <label className="form-field file-field"><span>Resume file{netlifyFormsEnabled && <span className="required-mark" aria-hidden="true"> *</span>} <small>(PDF, max 8 MB)</small></span><span className="file-picker"><FileUp size={18} /><input type="file" name="resume" accept="application/pdf,.pdf" required={netlifyFormsEnabled} />Choose a PDF file</span></label> : <p className="resume-upload-notice" role="note">Resume upload is temporarily disabled until secure file protection is confirmed.</p>}
           <label className="consent-field"><input name="consent" type="checkbox" required={netlifyFormsEnabled} /><span>I agree that CIPET GYAN may use these details to respond to my career or recruitment enquiry.{netlifyFormsEnabled && <span className="required-mark" aria-hidden="true"> *</span>}</span></label>
         </PreviewForm>}
       </div>
     </section>
     <section className="contact-direct-section"><div className="page-container contact-direct-inner"><div><span className="eyebrow">PREFER EMAIL?</span><h2>Contact CIPET GYAN directly</h2><p>For account, payment, refund or educational-content queries, use the existing support email.</p></div><a className="email-contact" href={`mailto:${email}`}><Mail size={19} /><span><strong>Email CIPET GYAN</strong><small>{email}</small></span><ArrowUpRight size={16} /></a></div></section>
-    <div className="page-container contact-safety-note"><ShieldCheck /><p>Do not send passwords or payment credentials. Candidate resumes are uploaded with their Netlify submission when live forms are enabled.</p></div>
+    <div className="page-container contact-safety-note"><ShieldCheck /><p>Do not send passwords or payment credentials. Resume uploads will only be enabled after secure file protection is confirmed.</p></div>
   </main>;
 };
 export default Contact;

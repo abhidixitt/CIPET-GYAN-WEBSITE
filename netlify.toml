@@ -4,6 +4,7 @@
 
 [build.environment]
   VITE_NETLIFY_FORMS_ENABLED = "true"
+  VITE_NETLIFY_RESUME_UPLOADS_ENABLED = "false"
 
 [[headers]]
   for = "/*"
@@ -14,8 +15,3 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=()"
     Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://img.youtube.com; media-src 'self'; connect-src 'self'; frame-src 'none'; upgrade-insecure-requests"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200

@@ -33,7 +33,7 @@ npm run build
 
 Contact forms are named `general-enquiry`, `employer-recruitment`, and `candidate-profile`. Notification email subjects identify the enquiry type, and submissions are viewable in the Netlify dashboard under **Forms**. The production build enables submissions using `VITE_NETLIFY_FORMS_ENABLED=true`.
 
-In Netlify, enable automatic form detection and create email notifications under **Forms > Submission notifications**. Recipients outside your Netlify team may need to confirm notifications. Candidate resumes are limited to 8 MB; Netlify recommends extra security configuration for uploads containing personal information. Set and publish a retention period before collecting submissions.
+In Netlify, enable automatic form detection and create email notifications under **Forms > Submission notifications**. Recipients outside your Netlify team may need to confirm notifications. Candidate resume uploads are disabled by default. Enable `VITE_NETLIFY_RESUME_UPLOADS_ENABLED=true` only after configuring and verifying Netlify's Very Good Security integration for personal-information file uploads. The website retention period is 90 days: review the forms monthly and delete older verified and spam submissions, including any resumes. Netlify may cache deleted file links for up to 24 hours.
 
 ## Routes
 

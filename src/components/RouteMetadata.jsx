@@ -9,17 +9,30 @@ const pageMeta = {
   "/education": ["Education & Learning | CIPET GYAN", "Technical learning support and study resources for plastics and polymer students."],
   "/contact": ["Contact CIPET GYAN | Enquiries & Support", "Contact CIPET GYAN about technical services, career support, recruitment and education."],
   "/disclaimer": ["Disclaimer | CIPET GYAN", "Independence, service scope and outcome disclaimers for CIPET GYAN."],
+  "/terms-and-conditions": ["Terms and Conditions | CIPET GYAN", "Terms for using the CIPET GYAN website, learning app, services and enquiry forms."],
+  "/privacy-policy": ["Privacy Policy | CIPET GYAN", "How CIPET GYAN handles account, learning, payment and website enquiry information."],
+  "/refund-policy": ["Refund Policy | CIPET GYAN", "Refund information for CIPET GYAN digital learning content and purchases."],
+  "/delete-account": ["Account and Data Deletion | CIPET GYAN", "How to request deletion of a CIPET GYAN account and associated personal data."],
 };
+
+const socialImage = "https://cipetgyan.me/cipet-gyan-logo.jpeg";
 
 const RouteMetadata = () => {
   const { pathname } = useLocation();
   useEffect(() => {
-    const [title, description] = pageMeta[pathname] || ["CIPET GYAN | Information", "Independent technical education and career support for plastics and polymer." ];
+    const [title, description] = pageMeta[pathname] || ["Page not found | CIPET GYAN", "This CIPET GYAN page could not be found."];
     document.title = title;
     const descriptionTag = document.querySelector('meta[name="description"]');
     if (descriptionTag) descriptionTag.setAttribute("content", description);
     const canonicalTag = document.querySelector('link[rel="canonical"]');
     if (canonicalTag) canonicalTag.setAttribute("href", `https://cipetgyan.me${pathname === "/" ? "/" : pathname}`);
+    document.querySelector('meta[property="og:title"]')?.setAttribute("content", title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute("content", description);
+    document.querySelector('meta[property="og:url"]')?.setAttribute("content", `https://cipetgyan.me${pathname === "/" ? "/" : pathname}`);
+    document.querySelector('meta[property="og:image"]')?.setAttribute("content", socialImage);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", title);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", description);
+    document.querySelector('meta[name="twitter:image"]')?.setAttribute("content", socialImage);
   }, [pathname]);
   return null;
 };
