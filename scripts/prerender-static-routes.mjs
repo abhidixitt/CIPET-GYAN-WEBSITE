@@ -23,7 +23,7 @@ const escapeHtml = (value) => value.replace(/[&<>"']/g, (character) => ({
 const baseHtml = await readFile(path.join(outputRoot, "index.html"), "utf8");
 
 function withMetadata(html, route, title, description) {
-  const url = `https://cipetgyan.me${route === "/" ? "/" : route}`;
+  const url = `https://cipetgyan.me${route === "/" ? "/" : `${route}/`}`;
   const safeTitle = escapeHtml(title);
   const safeDescription = escapeHtml(description);
   let page = html;

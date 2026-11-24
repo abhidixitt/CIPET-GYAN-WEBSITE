@@ -1,8 +1,7 @@
+import { useState } from "react";
 import { ArrowRight, BookOpen, Download, FileText, GraduationCap, Layers3 } from "lucide-react";
 import { motion } from "framer-motion";
 import heroAsset from "../assets/hero.png";
-
-const APP_DOWNLOAD_URL = "/app-download.apk";
 
 const reveal = {
   hidden: { opacity: 0, y: 22 },
@@ -10,6 +9,7 @@ const reveal = {
 };
 
 const Hero = () => {
+  const [showAppNotice, setShowAppNotice] = useState(() => new URLSearchParams(window.location.search).get("app") === "coming-soon");
   return (
     <section className="hero" id="home">
       <div className="page-container hero-grid">
@@ -24,8 +24,9 @@ const Hero = () => {
           <motion.div className="hero-actions" variants={reveal} initial="hidden" animate="visible" transition={{ delay: 0.3 }}>
             <a className="hero-button" href="#resources">Explore resources <ArrowRight size={17} aria-hidden="true" /></a>
             <a className="hero-button secondary" href="#about">Why CIPET GYAN</a>
-            <a className="hero-button download-button" href={APP_DOWNLOAD_URL}><Download size={17} aria-hidden="true" /> Download app</a>
+            <button className="hero-button download-button" type="button" onClick={() => setShowAppNotice(true)}><Download size={17} aria-hidden="true" /> App coming soon</button>
           </motion.div>
+          {showAppNotice && <p className="app-coming-soon" role="status" aria-live="polite">The CIPET GYAN app will be available soon. Please check back later.</p>}
         </div>
 
         <motion.div className="hero-art" initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.25, ease: "easeOut" }}>

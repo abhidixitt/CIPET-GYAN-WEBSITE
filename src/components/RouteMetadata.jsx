@@ -20,15 +20,17 @@ const socialImage = "https://cipetgyan.me/cipet-gyan-logo.jpeg";
 const RouteMetadata = () => {
   const { pathname } = useLocation();
   useEffect(() => {
-    const [title, description] = pageMeta[pathname] || ["Page not found | CIPET GYAN", "This CIPET GYAN page could not be found."];
+    const normalizedPath = pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
+    const canonicalUrl = `https://cipetgyan.me${normalizedPath === "/" ? "/" : `${normalizedPath}/`}`;
+    const [title, description] = pageMeta[normalizedPath] || ["Page not found | CIPET GYAN", "This CIPET GYAN page could not be found."];
     document.title = title;
     const descriptionTag = document.querySelector('meta[name="description"]');
     if (descriptionTag) descriptionTag.setAttribute("content", description);
     const canonicalTag = document.querySelector('link[rel="canonical"]');
-    if (canonicalTag) canonicalTag.setAttribute("href", `https://cipetgyan.me${pathname === "/" ? "/" : pathname}`);
+    if (canonicalTag) canonicalTag.setAttribute("href", canonicalUrl);
     document.querySelector('meta[property="og:title"]')?.setAttribute("content", title);
     document.querySelector('meta[property="og:description"]')?.setAttribute("content", description);
-    document.querySelector('meta[property="og:url"]')?.setAttribute("content", `https://cipetgyan.me${pathname === "/" ? "/" : pathname}`);
+    document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonicalUrl);
     document.querySelector('meta[property="og:image"]')?.setAttribute("content", socialImage);
     document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", title);
     document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", description);

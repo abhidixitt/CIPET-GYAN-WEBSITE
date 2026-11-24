@@ -6,6 +6,12 @@
   VITE_NETLIFY_FORMS_ENABLED = "true"
   VITE_NETLIFY_RESUME_UPLOADS_ENABLED = "true"
 
+[[redirects]]
+  from = "/app-download.apk"
+  to = "/?app=coming-soon"
+  status = 302
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
