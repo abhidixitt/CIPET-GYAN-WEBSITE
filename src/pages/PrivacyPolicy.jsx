@@ -31,7 +31,7 @@ const PrivacyPolicy = () => {
       </section>
       <section className="privacy-policy-section">
         <h2>Service providers and sharing</h2>
-        <p>We use Firebase for authentication and app data, Render to host our backend, Cloudflare R2 to store and deliver files, Google Play or Razorpay to process payments, and YouTube/Google when you play embedded YouTube videos. Those providers receive information needed for their services and handle it under their own privacy terms.</p>
+        <p>We use Firebase for authentication and app data, Render to host our backend, Cloudflare R2 to store and deliver files, Google Play or Razorpay to process payments, YouTube/Google when you play embedded YouTube videos, and Google Analytics to understand website usage. Depending on enabled measurement settings, Google Analytics may collect page views and interaction events such as scrolling, outbound clicks and video engagement. Google processes this information under its own privacy terms.</p>
         <p>We do not sell personal information. We may disclose information where necessary to protect users or the service, respond to valid legal requests, or comply with law.</p>
       </section>
       <section className="privacy-policy-section">
