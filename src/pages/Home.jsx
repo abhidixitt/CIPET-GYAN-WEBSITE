@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen, BriefcaseBusiness, Check, GraduationCap, Handshake, ShieldCheck } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen, BriefcaseBusiness, Check, GraduationCap, Handshake, MessageSquareText, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import brandHero from "../assets/01_Brand_Hero.jpg";
 import industryHero from "../assets/plastic industry.jfif";
@@ -69,6 +69,7 @@ const Home = () => (
     <section className="mission-section"><div className="page-container mission-grid"><article><span className="eyebrow">OUR MISSION</span><h2>Empower learners, professionals and organisations.</h2><p>Through technical education, career development, recruitment assistance and industry-oriented consultancy.</p></article><article><span className="eyebrow">OUR VISION</span><h2>A trusted independent industry knowledge platform.</h2><p>For career opportunities, technical guidance and professional connections in plastics and polymer.</p></article></div></section>
 
     <section className="contact-band" id="contact"><div className="page-container contact-band-inner"><div><span className="eyebrow">START A CONVERSATION</span><h2>Have a technical, career or recruitment enquiry?</h2><p>Tell us what support you are looking for.</p></div><Link className="button button-primary" to="/contact">Contact CIPET GYAN <ArrowRight size={16} /></Link></div></section>
+    <Link className="floating-enquiry-button" to="/contact" aria-label="Open enquiry form"><MessageSquareText size={18} aria-hidden="true" /><span>Enquiry</span></Link>
   </main>
 );
 

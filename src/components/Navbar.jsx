@@ -1,7 +1,6 @@
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logoAsset from "../assets/cipet-logo.jpeg";
 
 const links = [
   { label: "Home", href: "/" },
@@ -31,7 +30,7 @@ const Navbar = () => {
       <header className={`site-header ${isScrolled ? "is-scrolled" : ""} ${location.pathname !== "/" ? "is-interior" : ""}`}>
       <div className="nav-shell">
         <Link className="brand" to="/" onClick={() => setIsOpen(false)}>
-          <span className="brand-mark"><img src={logoAsset} alt="" /></span>
+          <span className="brand-mark"><img src="/cipet-gyan-logo.jpeg" alt="" /></span>
           CIPET GYAN
         </Link>
         <nav className={`nav-links ${isOpen ? "is-open" : ""}`} aria-label="Primary navigation">

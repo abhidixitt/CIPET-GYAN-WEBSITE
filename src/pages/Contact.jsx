@@ -32,7 +32,7 @@ const PreviewForm = ({ type, title, intro, children }) => {
     try {
       const response = await fetch("/", { method: "POST", body: formData });
       if (!response.ok) throw new Error("We couldn’t send your enquiry. Please try again.");
-      setStatus({ kind: "success", message: "Thanks, your enquiry was received. The CIPET GYAN team will follow up using the contact details you provided." });
+      setStatus({ kind: "success", message: "Enquiry sent successfully! The CIPET GYAN team will follow up using the contact details you provided." });
       form.reset();
     } catch (error) {
       setStatus({ kind: "error", message: error.message || "We couldn’t send your enquiry. Please try again." });
@@ -56,7 +56,7 @@ const Contact = () => {
   const [selectedPath, setSelectedPath] = useState("general");
   const current = paths.find((path) => path.id === selectedPath);
   return <main className="interior-page">
-    <header className="interior-hero"><div className="page-container"><span className="eyebrow">CONTACT &amp; ENQUIRIES</span><h1>Choose the enquiry that fits you.</h1><p>Start by selecting who you are and what you need. We’ll show only the matching form.</p><div className="preview-banner"><ShieldCheck size={18} /><span>{netlifyFormsEnabled ? <><strong>Netlify Forms enabled.</strong> Each enquiry type has its own submission list and notification settings. Resume uploads are limited to 8 MB.</> : <><strong>Review preview only.</strong> Forms are not sending or storing entries yet. Enable Netlify submissions after review and notification setup.</>}</span></div></div></header>
+    <header className="interior-hero"><div className="page-container"><span className="eyebrow">CONTACT &amp; ENQUIRIES</span><h1>Choose the enquiry that fits you.</h1><p>Start by selecting who you are and what you need. We’ll show only the matching form.</p></div></header>
     <section className="page-container contact-choice-section">
       <div className="contact-choice-heading"><span className="eyebrow">STEP 1 · YOUR ENQUIRY TYPE</span><h2>What brings you here?</h2><p>Choose one option to see who it’s for and the details we’ll ask you to provide.</p></div>
       <div className="contact-path-grid" role="tablist" aria-label="Choose enquiry type">{paths.map(({ id, number, icon: Icon, title, audience, text }) => <button className={`contact-path-card ${selectedPath === id ? "is-selected" : ""}`} key={id} type="button" role="tab" id={`contact-tab-${id}`} aria-selected={selectedPath === id} aria-controls="contact-selected-panel" onClick={() => setSelectedPath(id)}>
