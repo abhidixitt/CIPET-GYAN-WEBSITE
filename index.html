@@ -4,17 +4,37 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="CIPET GYAN helps learners find focused study materials, syllabus guidance, and previous-year practice papers." />
+    <meta name="description" content="CIPET GYAN is an independent plastics and polymer industry platform for technical education, career support, recruitment assistance and industrial consultancy." />
     <link rel="canonical" href="https://cipetgyan.me/" />
-    <meta name="theme-color" content="#2563eb" />
-    <meta property="og:title" content="CIPET GYAN | Focused learning for CIPET students" />
-    <meta property="og:description" content="Study materials, syllabus guidance, and previous-year practice papers in one focused place." />
+    <meta name="theme-color" content="#102b46" />
+    <meta property="og:title" content="CIPET GYAN | Plastics & Polymer Knowledge, Careers and Support" />
+    <meta property="og:description" content="An independent platform for technical education, career development, recruitment support and industrial consultancy." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://cipetgyan.me/" />
     <meta name="twitter:card" content="summary" />
-    <title>CIPET GYAN | Focused learning for CIPET students</title>
+    <title>CIPET GYAN | Plastics & Polymer Knowledge, Careers and Support</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"CIPET GYAN","url":"https://cipetgyan.me/","description":"Independent technical education, career guidance, recruitment support and industrial consultancy platform focused on plastics and polymer."}</script>
   </head>
   <body>
+    <!-- Static form declarations let Netlify detect React-rendered forms during the build. -->
+    <form name="general-enquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input name="form-name" value="general-enquiry" /><input name="bot-field" />
+      <input name="subject" value="CIPET GYAN | General Enquiry (%{submissionId})" />
+      <input name="fullName" /><input name="email" /><input name="mobile" /><input name="organisation" />
+      <input name="service" /><input name="querySubject" /><textarea name="message"></textarea>
+    </form>
+    <form name="employer-recruitment" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input name="form-name" value="employer-recruitment" /><input name="bot-field" /><input name="subject" value="CIPET GYAN | Employer Recruitment Request (%{submissionId})" />
+      <input name="company" /><input name="hrContact" /><input name="email" /><input name="employerPhone" />
+      <input name="position" /><input name="vacancies" /><input name="qualification" /><input name="experience" />
+      <input name="jobLocation" /><textarea name="jobDescription"></textarea>
+    </form>
+    <form name="candidate-profile" method="POST" enctype="multipart/form-data" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input name="form-name" value="candidate-profile" /><input name="bot-field" /><input name="subject" value="CIPET GYAN | Candidate Profile (%{submissionId})" />
+      <input name="candidateName" /><input name="email" /><input name="candidatePhone" />
+      <input name="candidateQualification" /><input name="specialisation" /><input name="candidateExperience" />
+      <input name="preferredLocation" /><input type="file" name="resume" /><input type="checkbox" name="consent" />
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

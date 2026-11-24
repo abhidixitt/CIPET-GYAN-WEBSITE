@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
       <header className="privacy-policy-header">
         <span className="eyebrow">CIPET GYAN</span>
         <h1>Privacy Policy</h1>
-        <p className="privacy-policy-updated">Last updated: 12 October 2026</p>
+        <p className="privacy-policy-updated">Last updated: 24 November 2026</p>
         <p>CIPET GYAN is an independent learning app. It is not an official CIPET app and is not endorsed by or affiliated with CIPET.</p>
       </header>
       <section className="privacy-policy-section">
@@ -41,6 +41,12 @@ const PrivacyPolicy = () => {
       <section className="privacy-policy-section">
         <h2>Age and security</h2>
         <p>CIPET GYAN is intended for people aged 13 or older and is not designed for children under 13. We take reasonable steps to protect information, but no online service can guarantee complete security. Keep your password private and use profile switching only on a trusted device.</p>
+      </section>
+      <section className="privacy-policy-section">
+        <h2>Website enquiries and recruitment submissions</h2>
+        <p>The website’s general enquiry, employer recruitment and candidate profile forms are configured to use Netlify Forms. During local review, submissions remain disabled and form data and selected files are not sent or stored. Do not enter real personal information in the local preview.</p>
+        <p>When enabled on the live site, submitted details and candidate PDF resumes (up to 8 MB) are processed and stored by Netlify Forms. Authorized site administrators can review submissions in the Netlify dashboard. Email notifications may include form details and uploaded-file links. Netlify recommends additional security configuration for file uploads containing personal information; review that setup before accepting resumes.</p>
+        <p>Before public submissions are enabled, CIPET GYAN must confirm the notification recipient, access permissions, file-upload security settings and retention period, and publish the retention period here. Submissions and resume files should be deleted when no longer needed.</p>
       </section>
       <section className="privacy-policy-section">
         <h2>Changes and contact</h2>
