@@ -23,9 +23,18 @@ const PreviewForm = ({ type, title, intro, children }) => {
       return;
     }
     const resume = resumeUploadsEnabled ? form.elements.namedItem("resume")?.files?.[0] : null;
-    if (resume && resume.size > 8 * 1024 * 1024) {
-      setStatus({ kind: "error", message: "Please choose a PDF smaller than 8 MB." });
-      return;
+    if (resume) {
+      if (resume.size > 8 * 1024 * 1024) {
+        setStatus({ kind: "error", message: "Please choose a PDF smaller than 8 MB." });
+        return;
+      }
+      const hasPdfExtension = /\.pdf$/i.test(resume.name);
+      const hasPdfMimeType = !resume.type || resume.type === "application/pdf";
+      const pdfSignature = await resume.slice(0, 5).text();
+      if (!hasPdfExtension || !hasPdfMimeType || pdfSignature !== "%PDF-") {
+        setStatus({ kind: "error", message: "Please choose a valid PDF resume." });
+        return;
+      }
     }
     setStatus({ kind: "sending", message: "Sending your enquiry…" });
     const formData = new FormData(form);
@@ -62,7 +71,9 @@ const Field = ({ label, name, type = "text", required = false, ...props }) => {
 const Contact = () => {
   const location = useLocation();
   const requestedService = new URLSearchParams(location.search).get("service") || "";
-  const [selectedPath, setSelectedPath] = useState("general");
+  const requestedType = new URLSearchParams(location.search).get("type") || "";
+  const candidateRequested = requestedType === "candidate" || requestedService === "resume" || requestedService === "resume-development";
+  const [selectedPath, setSelectedPath] = useState(candidateRequested ? "candidate" : "general");
   const current = paths.find((path) => path.id === selectedPath);
   return <main className="interior-page">
     <header className="interior-hero"><div className="page-container"><span className="eyebrow">CONTACT &amp; ENQUIRIES</span><h1>Choose the enquiry that fits you.</h1><p>Start by selecting who you are and what you need. We’ll show only the matching form.</p></div></header>
@@ -86,18 +97,18 @@ const Contact = () => {
           <div className="form-row"><Field label="Required qualification" name="qualification" /><Field label="Required experience" name="experience" /></div>
           <Field label="Job location" name="jobLocation" /><Field label="Job description and key requirements" name="jobDescription" type="textarea" required />
         </PreviewForm>}
-        {selectedPath === "candidate" && <PreviewForm type="candidate" title="Candidate profile submission" intro={resumeUploadsEnabled ? "For a student, fresher or experienced professional seeking job or career support. Add a PDF resume up to 8 MB." : "For a student, fresher or experienced professional seeking job or career support. Resume uploads are temporarily disabled while secure file protection is set up."}>
+        {selectedPath === "candidate" && <PreviewForm type="candidate" title="Candidate profile submission" intro={resumeUploadsEnabled ? "For a student, fresher or experienced professional seeking job or career support. Add a PDF resume up to 8 MB." : "For a student, fresher or experienced professional seeking job or career support. Resume uploads are currently unavailable."}>
           <div className="form-row"><Field label="Full name" name="candidateName" required /><Field label="Email address" name="email" type="email" required /></div>
           <div className="form-row"><Field label="Phone number" name="candidatePhone" type="tel" required /><Field label="Qualification" name="candidateQualification" required /></div>
           <div className="form-row"><Field label="Specialisation" name="specialisation" /><Field label="Experience" name="candidateExperience" /></div>
           <Field label="Preferred job location" name="preferredLocation" />
-          {resumeUploadsEnabled ? <label className="form-field file-field"><span>Resume file{netlifyFormsEnabled && <span className="required-mark" aria-hidden="true"> *</span>} <small>(PDF, max 8 MB)</small></span><span className="file-picker"><FileUp size={18} /><input type="file" name="resume" accept="application/pdf,.pdf" required={netlifyFormsEnabled} />Choose a PDF file</span></label> : <p className="resume-upload-notice" role="note">Resume upload is temporarily disabled until secure file protection is confirmed.</p>}
+          {resumeUploadsEnabled ? <label className="form-field file-field"><span>Resume file{netlifyFormsEnabled && <span className="required-mark" aria-hidden="true"> *</span>} <small>(PDF, max 8 MB)</small></span><span className="file-picker"><FileUp size={18} /><input type="file" name="resume" accept="application/pdf,.pdf" required={netlifyFormsEnabled} />Choose a PDF file</span></label> : <p className="resume-upload-notice" role="note">Resume uploads are currently unavailable.</p>}
           <label className="consent-field"><input name="consent" type="checkbox" required={netlifyFormsEnabled} /><span>I agree that CIPET GYAN may use these details to respond to my career or recruitment enquiry.{netlifyFormsEnabled && <span className="required-mark" aria-hidden="true"> *</span>}</span></label>
         </PreviewForm>}
       </div>
     </section>
     <section className="contact-direct-section"><div className="page-container contact-direct-inner"><div><span className="eyebrow">PREFER EMAIL?</span><h2>Contact CIPET GYAN directly</h2><p>For account, payment, refund or educational-content queries, use the existing support email.</p></div><a className="email-contact" href={`mailto:${email}`}><Mail size={19} /><span><strong>Email CIPET GYAN</strong><small>{email}</small></span><ArrowUpRight size={16} /></a></div></section>
-    <div className="page-container contact-safety-note"><ShieldCheck /><p>Do not send passwords or payment credentials. Resume uploads will only be enabled after secure file protection is confirmed.</p></div>
+    <div className="page-container contact-safety-note"><ShieldCheck /><p>Do not upload passwords, government ID, financial records or payment credentials. Uploaded resumes are processed through Netlify Forms and may be available to authorized site administrators and configured notification recipients.</p></div>
   </main>;
 };
 export default Contact;

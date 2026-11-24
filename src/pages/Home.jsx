@@ -55,7 +55,7 @@ const Home = () => (
     </section>
 
     <section className="career-band" id="careers">
-      <div className="page-container career-band-inner"><div><span className="eyebrow">CAREERS &amp; OPPORTUNITIES</span><h2>Find your next opportunity in plastics and polymer.</h2><p>Explore job updates, candidate support and recruitment coordination for technical roles.</p></div><div className="career-actions"><Link className="button button-light" to="/careers">Explore careers <ArrowRight size={16} /></Link><Link className="button button-outline-light" to="/contact?service=resume">Submit your resume</Link><a className="career-whatsapp" href="https://whatsapp.com/channel/0029Vamhez14inotQigdgn2C" target="_blank" rel="noreferrer">Follow job updates <ArrowUpRight size={15} /></a></div></div>
+      <div className="page-container career-band-inner"><div><span className="eyebrow">CAREERS &amp; OPPORTUNITIES</span><h2>Find your next opportunity in plastics and polymer.</h2><p>Explore job updates, candidate support and recruitment coordination for technical roles.</p></div><div className="career-actions"><Link className="button button-light" to="/careers">Explore careers <ArrowRight size={16} /></Link><Link className="button button-outline-light" to="/contact?type=candidate">Submit your resume</Link><a className="career-whatsapp" href="https://whatsapp.com/channel/0029Vamhez14inotQigdgn2C" target="_blank" rel="noreferrer">Follow job updates <ArrowUpRight size={15} /></a></div></div>
     </section>
 
     <section className="section-pad learning-section" id="education">

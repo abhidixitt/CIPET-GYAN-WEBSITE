@@ -8,13 +8,13 @@ import myProfile from "../assets/promo-frames/video-my-profile.jpg";
 import contentLibrary from "../assets/promo-frames/video-content-library.jpg";
 import signIn from "../assets/promo-frames/video-sign-in.jpg";
 import resetPassword from "../assets/promo-frames/video-reset-password.jpg";
-import reviewSupport from "../assets/reviews/review-support.jpg";
-import reviewComplete from "../assets/reviews/review-complete.jpg";
-import reviewGuidance from "../assets/reviews/review-guidance.jpg";
-import reviewPdfHelp from "../assets/reviews/review-pdf-help.jpg";
-import reviewPdfMatch from "../assets/reviews/review-pdf-match.jpg";
-import reviewPaper from "../assets/reviews/review-paper.jpg";
-import reviewEasy from "../assets/reviews/review-easy.jpg";
+import reviewSupport from "../assets/reviews/review-support-redacted.jpg";
+import reviewComplete from "../assets/reviews/review-complete-redacted.jpg";
+import reviewGuidance from "../assets/reviews/review-guidance-redacted.jpg";
+import reviewPdfHelp from "../assets/reviews/review-pdf-help-redacted.jpg";
+import reviewPdfMatch from "../assets/reviews/review-pdf-match-redacted.jpg";
+import reviewPaper from "../assets/reviews/review-paper-redacted.jpg";
+import reviewEasy from "../assets/reviews/review-easy-redacted.jpg";
 
 const slides = [
   [learningMaterials, "Learning materials", "Choose between PDFs and video learning."],
@@ -27,13 +27,13 @@ const slides = [
   [resetPassword, "Reset password", "Recover access to your learning account."],
 ];
 const reviews = [
-  [reviewSupport, "CIPET Student", "Thanks bhai. Aapka bahut sahyog raha is paper ko dilwane me, thanks a lot."],
-  [reviewComplete, "CIPET Student", "Sir mera ho gaya, thank you."],
-  [reviewGuidance, "CIPET Student", "Your support and guidance made my work much easier. I am sincerely grateful to you."],
-  [reviewPdfHelp, "CIPET Student", "Thank you so much sir for your support. Bahut zyada help hua apke PDF se."],
-  [reviewPdfMatch, "CIPET Student", "Thank you sir. Aapke PDF se pata hai kitne questions same aaye the."],
-  [reviewPaper, "Tanu Tiwari", "Overall questions paper easy to moderate tha bhaiya."],
-  [reviewEasy, "MNIT Nav", "Paper easy tha. Aapne jo bataya bhi aaya. PDF 100 percent kaam kiya."],
+  [reviewSupport, "CIPET learner", "Thanks for your support in getting this paper."],
+  [reviewComplete, "CIPET learner", "Sir, I got through. Thank you."],
+  [reviewGuidance, "CIPET learner", "Your support and guidance made my work much easier."],
+  [reviewPdfHelp, "CIPET learner", "Thank you for your support and help with the PDF."],
+  [reviewPdfMatch, "CIPET learner", "The PDF helped me prepare for the questions."],
+  [reviewPaper, "CIPET learner", "Overall, the question paper was easy to moderate."],
+  [reviewEasy, "CIPET learner", "The PDF was useful for my preparation."],
 ];
 const videoUrl = "https://youtu.be/brwZfulNDag";
 
@@ -50,7 +50,7 @@ const PlatformShowcase = () => {
       <div className="platform-carousel"><button type="button" className="platform-arrow" onClick={() => shift(-1)} aria-label="Previous app screen"><ArrowLeft /></button><figure><img src={slides[active][0]} alt={`CIPET GYAN app: ${slides[active][1]}`} /><figcaption><strong>{slides[active][1]}</strong><span>{slides[active][2]}</span></figcaption></figure><button type="button" className="platform-arrow" onClick={() => shift(1)} aria-label="Next app screen"><ArrowRight /></button></div>
       <div className="platform-dots" aria-label="Select app screen">{slides.map((slide, index) => <button key={slide[1]} type="button" className={active === index ? "is-active" : ""} aria-label={`Show ${slide[1]}`} aria-current={active === index ? "true" : undefined} onClick={() => setActive(index)} />)}</div>
     </div></section>
-    <section className="platform-reviews"><div className="page-container"><div className="section-title-row"><div><span className="eyebrow">STUDENT REVIEWS</span><h2>Feedback from CIPET learners.</h2></div><p className="showcase-intro">Student messages previously shared on the learning site.</p></div><div className="testimonial-grid">{reviews.map(([image, name, quote], index) => <article className="testimonial-card" key={`${name}-${index}`}><img src={image} alt="Redacted student review screenshot" loading="lazy" /><strong>{name}</strong><p>“{quote}”</p></article>)}</div></div></section>
+    <section className="platform-reviews"><div className="page-container"><div className="section-title-row"><div><span className="eyebrow">STUDENT REVIEWS</span><h2>Feedback from CIPET learners.</h2></div><p className="showcase-intro">Messages shared by learners. Names, contact details and documents are redacted.</p></div><div className="testimonial-grid">{reviews.map(([image, name, quote], index) => <article className="testimonial-card" key={`${name}-${index}`}><img src={image} alt="Redacted student review screenshot" loading="lazy" /><strong>{name}</strong><p>“{quote}”</p></article>)}</div></div></section>
   </>;
 };
 export default PlatformShowcase;

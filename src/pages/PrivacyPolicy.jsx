@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
         <span className="eyebrow">CIPET GYAN</span>
         <h1>Privacy Policy</h1>
         <p className="privacy-policy-updated">Last updated: 24 November 2026</p>
-        <p>CIPET GYAN is an independent learning app. It is not an official CIPET app and is not endorsed by or affiliated with CIPET.</p>
+        <p>CIPET GYAN is an independent learning and career-support platform. It is not an official CIPET service and is not endorsed by or affiliated with CIPET.</p>
       </header>
       <section className="privacy-policy-section">
         <h2>Information we collect</h2>
@@ -45,7 +45,7 @@ const PrivacyPolicy = () => {
       <section className="privacy-policy-section">
         <h2>Website enquiries and recruitment submissions</h2>
         <p>The website’s general enquiry, employer recruitment and candidate profile forms use Netlify Forms. During local review, submissions are disabled and form data and selected files are not sent or stored. Do not enter real personal information in the local preview.</p>
-        <p>On the live site, submitted enquiry and candidate profile details are processed and stored by Netlify Forms. Authorized site administrators can review submissions in the Netlify dashboard. Resume uploads are temporarily disabled while secure file protection is configured. Netlify recommends its Very Good Security integration for form uploads containing personal information. If resume uploads are later enabled, email notifications may include resume links; candidates should not upload sensitive identity or financial documents.</p>
+        <p>On the live site, submitted enquiry and candidate profile details and uploaded resumes are processed and stored by Netlify Forms. Authorized site administrators can review submissions in the Netlify dashboard, and configured notification recipients may receive submission details or resume links by email. Resume uploads use Netlify Forms without an additional file-protection integration. Do not upload government identification, financial records, passwords or other highly sensitive documents.</p>
         <p>Website enquiry records and resumes are retained for no longer than 90 days after submission. Site administrators review and delete old submissions monthly and remove them earlier when they are no longer needed. Netlify notes that cached file links may remain accessible for up to 24 hours after deletion. This retention period applies only to website forms; app account and payment records follow the separate retention information above.</p>
       </section>
       <section className="privacy-policy-section">
