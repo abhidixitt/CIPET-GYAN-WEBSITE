@@ -13,6 +13,7 @@ import packagingImage from "../assets/13_Packaging_Industry.jpg";
 import testingImage from "../assets/14_Testing_Laboratories.jpg";
 import manufacturingImage from "../assets/15_Manufacturing_Industry.jpg";
 import polymerTrainingImage from "../assets/polymer processing.jfif";
+import networkingImage from "../assets/16_Industry_Networking.png";
 
 export const services = [
   {
@@ -93,6 +94,7 @@ export const services = [
   {
     number: "10", slug: "professional-networking", title: "Industrial Networking & Professional Support",
     summary: "Connections and knowledge sharing among students, professionals, recruiters and manufacturers.",
+    image: networkingImage, alt: "Plastics and polymer industry professionals sharing ideas in a manufacturing workspace",
     audience: "Students, professionals, recruiters, manufacturers and laboratories",
     items: ["Industry networking and technical knowledge sharing", "Recruitment coordination and career opportunity sharing", "Professional communication and industry information", "Collaboration enquiries"],
     cta: "Connect with CIPET GYAN",
