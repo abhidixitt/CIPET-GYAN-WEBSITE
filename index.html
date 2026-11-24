@@ -21,20 +21,20 @@
     <form name="general-enquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input name="form-name" value="general-enquiry" /><input name="bot-field" />
       <input name="subject" value="CIPET GYAN | General Enquiry (%{submissionId})" />
-      <input name="fullName" /><input name="email" /><input name="mobile" /><input name="organisation" />
-      <input name="service" /><input name="querySubject" /><textarea name="message"></textarea>
+      <input name="fullName" required /><input name="email" type="email" required /><input name="mobile" type="tel" required /><input name="organisation" />
+      <input name="service" /><input name="querySubject" required /><textarea name="message" required></textarea>
     </form>
     <form name="employer-recruitment" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input name="form-name" value="employer-recruitment" /><input name="bot-field" /><input name="subject" value="CIPET GYAN | Employer Recruitment Request (%{submissionId})" />
-      <input name="company" /><input name="hrContact" /><input name="email" /><input name="employerPhone" />
-      <input name="position" /><input name="vacancies" /><input name="qualification" /><input name="experience" />
-      <input name="jobLocation" /><textarea name="jobDescription"></textarea>
+      <input name="company" required /><input name="hrContact" required /><input name="email" type="email" required /><input name="employerPhone" type="tel" required />
+      <input name="position" required /><input name="vacancies" /><input name="qualification" /><input name="experience" />
+      <input name="jobLocation" /><textarea name="jobDescription" required></textarea>
     </form>
     <form name="candidate-profile" method="POST" enctype="multipart/form-data" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input name="form-name" value="candidate-profile" /><input name="bot-field" /><input name="subject" value="CIPET GYAN | Candidate Profile (%{submissionId})" />
-      <input name="candidateName" /><input name="email" /><input name="candidatePhone" />
-      <input name="candidateQualification" /><input name="specialisation" /><input name="candidateExperience" />
-      <input name="preferredLocation" /><input type="file" name="resume" /><input type="checkbox" name="consent" />
+      <input name="candidateName" required /><input name="email" type="email" required /><input name="candidatePhone" type="tel" required />
+      <input name="candidateQualification" required /><input name="specialisation" /><input name="candidateExperience" />
+      <input name="preferredLocation" /><input type="file" name="resume" required /><input type="checkbox" name="consent" required />
     </form>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

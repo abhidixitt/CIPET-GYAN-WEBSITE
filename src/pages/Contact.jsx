@@ -41,14 +41,22 @@ const PreviewForm = ({ type, title, intro, children }) => {
   return <form className="preview-form" name={formNames[type]} method="POST" action="/" encType="multipart/form-data" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={handleSubmit}>
     <input type="hidden" name="form-name" value={formNames[type]} />
     <input type="hidden" name="subject" value={emailSubjects[type]} />
-    <div className="form-heading"><h3>{title}</h3><p>{intro}</p></div>
+    <div className="form-heading"><h3>{title}</h3><p>{intro}</p><p className="form-required-note"><span aria-hidden="true">*</span> Required fields</p></div>
     <label className="honeypot-field" aria-hidden="true" tabIndex="-1">Leave this field empty<input name="bot-field" type="text" autoComplete="off" tabIndex="-1" /></label>
     {children}
     <button className="button button-primary" type="submit" disabled={status.kind === "sending"}>{netlifyFormsEnabled ? "Send enquiry" : "Preview this form"} <ArrowRight size={15} /></button>
     {status.message && <p className={`form-preview-status ${status.kind}`} role="status">{status.message}</p>}
   </form>;
 };
-const Field = ({ label, name, type = "text", required = false, ...props }) => <label className="form-field">{label}{type === "textarea" ? <textarea name={name} required={required} rows="4" {...props} /> : <input name={name} type={type} required={required} {...props} />}</label>;
+const Field = ({ label, name, type = "text", required = false, ...props }) => {
+  const phoneProps = type === "tel" ? {
+    inputMode: "tel",
+    pattern: "(?:\\+91[\\s-]?|0)?[6-9][0-9]{9}",
+    title: "Enter a valid Indian mobile number with 10 digits, optionally starting with +91 or 0.",
+    maxLength: 14,
+  } : {};
+  return <label className="form-field"><span>{label}{required && <span className="required-mark" aria-hidden="true"> *</span>}</span>{type === "textarea" ? <textarea name={name} required={required} rows="4" {...props} /> : <input name={name} type={type} required={required} maxLength={type === "email" ? 254 : undefined} {...phoneProps} {...props} />}</label>;
+};
 
 const Contact = () => {
   const location = useLocation();
@@ -66,13 +74,13 @@ const Contact = () => {
         <div className="contact-selected-heading"><span className="eyebrow">STEP 2 · {current.number} / {current.title.toUpperCase()}</span><h2>{current.audience}</h2><p>{current.text}</p></div>
         {selectedPath === "general" && <PreviewForm type="general" title="General question or service enquiry" intro="Use this for learning support, consultancy, account questions, or general collaboration.">
           <div className="form-row"><Field label="Full name" name="fullName" required /><Field label="Email address" name="email" type="email" required /></div>
-          <div className="form-row"><Field label="Mobile number (optional)" name="mobile" type="tel" /><Field label="Organisation / college (optional)" name="organisation" /></div>
+          <div className="form-row"><Field label="Mobile number" name="mobile" type="tel" required /><Field label="Organisation / college (optional)" name="organisation" /></div>
           <label className="form-field">Service you’re asking about<select name="service" defaultValue={requestedService}><option value="">Choose a service</option><option value="recruitment-placement">Recruitment &amp; Placement</option><option value="technical-training">Technical Training</option><option value="interview-career-guidance">Interview &amp; Career Guidance</option><option value="technical-consultancy">Technical Consultancy</option><option value="laboratory-quality-support">Laboratory Support</option><option value="study-materials">Study Materials</option><option value="industrial-jobs">Industrial Job Updates</option><option value="resume-development">Resume Development</option><option value="industrial-training">Industrial Training</option><option value="professional-networking">Professional Networking</option></select></label>
           <Field label="Subject" name="querySubject" required /><Field label="How can we help?" name="message" type="textarea" required />
         </PreviewForm>}
         {selectedPath === "employer" && <PreviewForm type="employer" title="Employer recruitment request" intro="For a company or HR representative looking for candidates. Include the role, required skills and hiring location.">
           <div className="form-row"><Field label="Company name" name="company" required /><Field label="HR contact person" name="hrContact" required /></div>
-          <div className="form-row"><Field label="Work email" name="email" type="email" required /><Field label="Phone number" name="employerPhone" type="tel" /></div>
+          <div className="form-row"><Field label="Work email" name="email" type="email" required /><Field label="Mobile number" name="employerPhone" type="tel" required /></div>
           <div className="form-row"><Field label="Position to fill" name="position" required /><Field label="Number of vacancies" name="vacancies" type="number" min="1" /></div>
           <div className="form-row"><Field label="Required qualification" name="qualification" /><Field label="Required experience" name="experience" /></div>
           <Field label="Job location" name="jobLocation" /><Field label="Job description and key requirements" name="jobDescription" type="textarea" required />
@@ -82,8 +90,8 @@ const Contact = () => {
           <div className="form-row"><Field label="Phone number" name="candidatePhone" type="tel" required /><Field label="Qualification" name="candidateQualification" required /></div>
           <div className="form-row"><Field label="Specialisation" name="specialisation" /><Field label="Experience" name="candidateExperience" /></div>
           <Field label="Preferred job location" name="preferredLocation" />
-          <label className="form-field file-field"><span>Resume file <small>(PDF, max 8 MB)</small></span><span className="file-picker"><FileUp size={18} /><input type="file" name="resume" accept="application/pdf,.pdf" required={netlifyFormsEnabled} />Choose a PDF file</span></label>
-          <label className="consent-field"><input name="consent" type="checkbox" required={netlifyFormsEnabled} />I agree that CIPET GYAN may use these details to respond to my career or recruitment enquiry.</label>
+          <label className="form-field file-field"><span>Resume file{netlifyFormsEnabled && <span className="required-mark" aria-hidden="true"> *</span>} <small>(PDF, max 8 MB)</small></span><span className="file-picker"><FileUp size={18} /><input type="file" name="resume" accept="application/pdf,.pdf" required={netlifyFormsEnabled} />Choose a PDF file</span></label>
+          <label className="consent-field"><input name="consent" type="checkbox" required={netlifyFormsEnabled} /><span>I agree that CIPET GYAN may use these details to respond to my career or recruitment enquiry.{netlifyFormsEnabled && <span className="required-mark" aria-hidden="true"> *</span>}</span></label>
         </PreviewForm>}
       </div>
     </section>
