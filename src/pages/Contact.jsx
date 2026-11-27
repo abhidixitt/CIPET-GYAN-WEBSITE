@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight, BriefcaseBusiness, FileUp, GraduationCap, Mail, MessageSquareText, ShieldCheck } from "lucide-react";
 import { useLocation } from "react-router-dom";
 
@@ -70,10 +70,20 @@ const Field = ({ label, name, type = "text", required = false, ...props }) => {
 
 const Contact = () => {
   const location = useLocation();
-  const requestedService = new URLSearchParams(location.search).get("service") || "";
-  const requestedType = new URLSearchParams(location.search).get("type") || "";
-  const candidateRequested = requestedType === "candidate" || requestedService === "resume" || requestedService === "resume-development";
-  const [selectedPath, setSelectedPath] = useState(candidateRequested ? "candidate" : "general");
+  const [requestedService, setRequestedService] = useState("");
+  const [selectedPath, setSelectedPath] = useState("general");
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      const params = new URLSearchParams(location.search);
+      const service = params.get("service") || "";
+      const requestedType = params.get("type") || "";
+      setRequestedService(service);
+      if (requestedType === "candidate" || service === "resume" || service === "resume-development") setSelectedPath("candidate");
+      else if (requestedType === "employer") setSelectedPath("employer");
+      else setSelectedPath("general");
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [location.search]);
   const current = paths.find((path) => path.id === selectedPath);
   return <main className="interior-page">
     <header className="interior-hero"><div className="page-container"><span className="eyebrow">CONTACT &amp; ENQUIRIES</span><h1>Choose the enquiry that fits you.</h1><p>Start by selecting who you are and what you need. We’ll show only the matching form.</p></div></header>
@@ -87,7 +97,7 @@ const Contact = () => {
         {selectedPath === "general" && <PreviewForm type="general" title="General question or service enquiry" intro="Use this for learning support, consultancy, account questions, or general collaboration.">
           <div className="form-row"><Field label="Full name" name="fullName" required /><Field label="Email address" name="email" type="email" required /></div>
           <div className="form-row"><Field label="Mobile number" name="mobile" type="tel" required /><Field label="Organisation / college (optional)" name="organisation" /></div>
-          <label className="form-field">Service you’re asking about<select name="service" defaultValue={requestedService}><option value="">Choose a service</option><option value="recruitment-placement">Recruitment &amp; Placement</option><option value="technical-training">Technical Training</option><option value="interview-career-guidance">Interview &amp; Career Guidance</option><option value="technical-consultancy">Technical Consultancy</option><option value="laboratory-quality-support">Laboratory Support</option><option value="study-materials">Study Materials</option><option value="industrial-jobs">Industrial Job Updates</option><option value="resume-development">Resume Development</option><option value="industrial-training">Industrial Training</option><option value="professional-networking">Professional Networking</option></select></label>
+          <label className="form-field">Service you’re asking about<select name="service" value={requestedService} onChange={(event) => setRequestedService(event.target.value)}><option value="">Choose a service</option><option value="recruitment-placement">Recruitment &amp; Placement</option><option value="technical-training">Technical Training</option><option value="interview-career-guidance">Interview &amp; Career Guidance</option><option value="technical-consultancy">Technical Consultancy</option><option value="laboratory-quality-support">Laboratory Support</option><option value="study-materials">Study Materials</option><option value="industrial-jobs">Industrial Job Updates</option><option value="resume-development">Resume Development</option><option value="industrial-training">Industrial Training</option><option value="professional-networking">Professional Networking</option></select></label>
           <Field label="Subject" name="querySubject" required /><Field label="How can we help?" name="message" type="textarea" required />
         </PreviewForm>}
         {selectedPath === "employer" && <PreviewForm type="employer" title="Employer recruitment request" intro="For a company or HR representative looking for candidates. Include the role, required skills and hiring location.">

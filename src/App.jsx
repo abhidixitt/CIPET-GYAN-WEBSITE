@@ -33,9 +33,9 @@ const RouteScrollManager = () => {
   return null;
 };
 
-const App = () => {
+export const SiteApp = () => {
   return (
-    <Router>
+    <>
       <RouteMetadata />
       <RouteScrollManager />
       <Navbar />
@@ -56,8 +56,10 @@ const App = () => {
       </Routes>
 
       <Footer />
-    </Router>
+    </>
   );
 };
+
+const App = () => <Router><SiteApp /></Router>;
 
 export default App;

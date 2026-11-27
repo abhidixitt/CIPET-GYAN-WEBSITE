@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { createServer } from "vite";
 
 const outputRoot = path.resolve("dist");
 const logoUrl = "https://cipetgyan.me/cipet-gyan-logo.jpeg";
@@ -21,6 +22,8 @@ const escapeHtml = (value) => value.replace(/[&<>"']/g, (character) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
 })[character]);
 const baseHtml = await readFile(path.join(outputRoot, "index.html"), "utf8");
+const vite = await createServer({ server: { middlewareMode: true }, appType: "custom" });
+const { render } = await vite.ssrLoadModule("/src/entry-server.jsx");
 
 function withMetadata(html, route, title, description) {
   const url = `https://cipetgyan.me${route === "/" ? "/" : `${route}/`}`;
@@ -42,7 +45,9 @@ function withMetadata(html, route, title, description) {
 }
 
 for (const [route, title, description] of routes) {
-  let page = withMetadata(baseHtml, route, title, description);
+  const renderedApp = render(route);
+  let page = withMetadata(baseHtml, route, title, description)
+    .replace('<div id="root"></div>', `<div id="root">${renderedApp}</div>`);
   if (route !== "/") {
     page = page.replace(/\s*<!-- Static form declarations[\s\S]*?(?=\s*<div id="root">)/, "");
     const routeDirectory = path.join(outputRoot, route.slice(1));
@@ -53,4 +58,5 @@ for (const [route, title, description] of routes) {
   }
 }
 
+await vite.close();
 console.log(`Generated route-specific metadata pages for ${routes.length} routes.`);
